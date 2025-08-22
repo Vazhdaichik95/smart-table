@@ -53,9 +53,12 @@ async function render(action) {
 
     result = applyPagination(result, state, action);
     */
+
+    query = applyPagination(query, state, action);
     
     const {total, items} = await API.getRecords(query);
 
+    updatePagination(total, query);
     sampleTable.render(items);
 }
 
@@ -68,7 +71,7 @@ const sampleTable = initTable({
 
 // @todo: инициализация
 
-const applyPagination = initPagination(
+const { applyPagination, updatePagination } = initPagination(
     sampleTable.pagination.elements,
     (el, page, isCurrent) => {
         const input = el.querySelector('input');
