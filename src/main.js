@@ -44,7 +44,7 @@ function render(action) {
     let state = collectState(); // состояние полей из таблицы
     let result = [...data]; // копируем для последующего изменения
     // @todo: использование
-
+    /*
     result = applySearching(result, state, action);
 
     result = applyFiltering(result, state, action);
@@ -52,6 +52,7 @@ function render(action) {
     result = applySorting(result, state, action);
 
     result = applyPagination(result, state, action);
+    */
 
     sampleTable.render(result)
 }
@@ -77,10 +78,12 @@ const applyPagination = initPagination(
     }
 );
 
+/*
 const applySorting = initSorting([
     sampleTable.header.elements.sortByDate,
     sampleTable.header.elements.sortByTotal
 ]);
+*/
 
 const applyFiltering = initFiltering(sampleTable.filter.elements, {
     searchBySeller: indexes.sellers
